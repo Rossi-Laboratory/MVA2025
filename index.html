@@ -121,119 +121,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis">
   <title>DLSF: Dual-Layer Synergistic Fusion</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       margin: 0;
-      padding: 2em;
-      background-color: #f9f9f9;
-      color: #333;
-      line-height: 1.6;
+      padding: 0;
+      background: #fff;
+      color: #111;
     }
-    h1, h2, h3 {
-      color: #1a237e;
+    header {
+      text-align: center;
+      padding: 2em;
+      border-bottom: 1px solid #ccc;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2em;
+    }
+    main {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 2em;
     }
     section {
       margin-bottom: 3em;
     }
+    h2 {
+      color: #1a237e;
+      margin-top: 1em;
+    }
     img {
       max-width: 100%;
-      height: auto;
-      margin-top: 1em;
-      border: 1px solid #ddd;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1em;
-    }
-    th, td {
+      display: block;
+      margin: 1em auto;
       border: 1px solid #ccc;
-      padding: 0.5em;
-      text-align: center;
-    }
-    th {
-      background-color: #e3f2fd;
     }
     footer {
+      border-top: 1px solid #ccc;
+      padding: 1em;
       font-size: 0.9em;
-      color: #777;
+      text-align: center;
+      color: #666;
+    }
+    .resources a {
+      display: inline-block;
+      margin-right: 1em;
+      color: #1a237e;
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
+  <header>
+    <h1>DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis</h1>
+  </header>
+  <main>
+    <section>
+      <h2>Abstract</h2>
+      <p>
+        We present DLSF, a novel framework for improving high-fidelity image synthesis using diffusion-based generative models. By introducing a dual-layer latent fusion strategy with Adaptive Global Fusion (AGF) and Dynamic Spatial Fusion (DSF), our method significantly enhances structural consistency and detail preservation compared to Stable Diffusion XL. Extensive evaluations demonstrate superior performance across FID, sFID, IS, and diversity metrics.
+      </p>
+    </section>
 
-  <h1>DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis</h1>
+    <section>
+      <h2>Pipeline Overview</h2>
+      <p><em>Figure 1: DLSF Pipeline</em></p>
+      <img src="https://drive.google.com/uc?export=view&id=1z9iDWK4TsL8lVXYHP23_ox1iuFZlpdIE" alt="Figure 1: DLSF Pipeline">
+    </section>
 
-  <section>
-    <h2>Overview</h2>
-    <p>
-      Stable Diffusion has redefined the frontier of image synthesis, but challenges like incomplete semantic alignment and detail loss remain in highly textured and complex scenes.
-      Our work proposes <strong>DLSF (Dual-Layer Synergistic Fusion)</strong>, a novel integration framework introducing:
-    </p>
-    <ul>
-      <li><strong>AGF</strong> – Adaptive Global Fusion</li>
-      <li><strong>DSF</strong> – Dynamic Spatial Fusion</li>
-    </ul>
-    <p>
-      These modules enable enhanced interaction between base and refine latent representations, achieving global coherence and local detail preservation.
-    </p>
-    <p><em>See Figure 1: DLSF Pipeline</em></p>
-    <img src="https://drive.google.com/uc?export=view&id=1z9iDWK4TsL8lVXYHP23_ox1iuFZlpdIE" alt="Figure 1: DLSF Pipeline">
-  </section>
+    <section>
+      <h2>Method</h2>
+      <p>
+        Our approach builds upon the SDXL architecture with two key modules. AGF performs adaptive cross-level feature harmonization, while DSF applies spatially-aware refinement via attention maps. Together, they create a fused latent representation that enhances both global semantics and local texture fidelity.
+      </p>
+    </section>
 
-  <section>
-    <h2>Methodology</h2>
-    <h3>Latent Diffusion + Synergistic Fusion</h3>
-    <p>
-      Building on SDXL’s latent diffusion framework, DLSF injects multi-level feature fusion through:
-    </p>
-    <h4>🔹 Adaptive Global Fusion (AGF)</h4>
-    <p>Merges base and refine latents with attention weighting to ensure structural consistency.</p>
-    <h4>🔸 Dynamic Spatial Fusion (DSF)</h4>
-    <p>Applies spatial attention at pixel-level to preserve textures and complex patterns.</p>
-  </section>
+    <section>
+      <h2>Quantitative Results</h2>
+      <p><em>Table 1: Comparison at 256x256</em></p>
+      <img src="assets/table1.png" alt="Table 1: Comparison at 256x256">
+      <p><em>Table 2: Comparison at 512x512</em></p>
+      <img src="assets/table2.png" alt="Table 2: Comparison at 512x512">
+    </section>
 
-  <section>
-    <h2>Experiments</h2>
-    <p>
-      Evaluation on Class-Conditional ImageNet at 256×256 and 512×512 resolutions, using:
-    </p>
-    <ul>
-      <li>FID (Fréchet Inception Distance)</li>
-      <li>sFID (Structural FID)</li>
-      <li>IS (Inception Score)</li>
-      <li>Precision & Recall</li>
-    </ul>
-    <p><em>See Table 1 & 2: Quantitative Results</em></p>
-    <img src="assets/table1.png" alt="Table 1: Comparison at 256x256">
-    <img src="assets/table2.png" alt="Table 2: Comparison at 512x512">
-    <p><em>See Figure 2: Qualitative Comparison with SDXL</em></p>
-    <img src="assets/figure2.png" alt="Figure 2: Qualitative Comparison among SDXL, AGF, and DSF">
-  </section>
-
-  <section>
-    <h2>Ablation Study</h2>
-    <p>
-      Investigating the impact of post-fusion refinement.
-      Results show that further refinement can cause over-smoothing and lower diversity.
-    </p>
-    <p><em>See Table 3: Ablation Study Results</em></p>
-    <img src="assets/table3.png" alt="Table 3: Ablation Study Results">
-  </section>
-
-  <section>
-    <h2>Visual Results</h2>
-    <p>
-      Explore our high-resolution 1024×1024 outputs using AGF and DSF.
-    </p>
-    <ul>
-      <li><em>Figure 3</em>: AGF vs DSF comparison</li>
+    <section>
+      <h2>Qualitative Results</h2>
+      <p><em>Figure 2: Comparison among SDXL, AGF, and DSF</em></p>
+      <img src="assets/figure2.png" alt="Figure 2: Qualitative Comparison">
+      <p><em>Figure 3: AGF vs DSF samples</em></p>
       <img src="assets/figure3.png" alt="Figure 3: AGF vs DSF Sample Comparison">
-      <li><em>Figure 4</em>: Limitation in text generation (e.g. street signs)</li>
-      <img src="assets/figure4.png" alt="Figure 4: Text Limitation in Generation">
-      <li><em>Figures 5–12</em>: Uncurated AGF/DSF samples</li>
+    </section>
+
+    <section>
+      <h2>Ablation Study</h2>
+      <p>
+        Additional refinement after feature fusion leads to degraded performance in terms of FID and IS, highlighting the importance of carefully controlled latent integration.
+      </p>
+      <p><em>Table 3: Ablation Study Results</em></p>
+      <img src="assets/table3.png" alt="Table 3: Ablation Study Results">
+    </section>
+
+    <section>
+      <h2>Additional Samples</h2>
+      <p><em>Figure 4: Text generation remains challenging (e.g. street signs)</em></p>
+      <img src="assets/figure4.png" alt="Figure 4: Text generation issue">
       <img src="assets/figure5.png" alt="Figure 5: AGF sample (chickadee)">
       <img src="assets/figure6.png" alt="Figure 6: DSF sample (jay)">
       <img src="assets/figure7.png" alt="Figure 7: AGF sample (terrapin)">
@@ -242,36 +235,20 @@
       <img src="assets/figure10.png" alt="Figure 10: DSF sample (bison)">
       <img src="assets/figure11.png" alt="Figure 11: DSF sample (altar)">
       <img src="assets/figure12.png" alt="Figure 12: DSF sample (candle)">
-    </ul>
-  </section>
+    </section>
 
-  <section>
-    <h2>Highlights</h2>
-    <ul>
-      <li>Outperforms SDXL in realism and diversity</li>
-      <li>Improves semantic alignment and texture fidelity</li>
-      <li>Modular design for flexible integration</li>
-      <li>Efficient generation with only 65 DDIM steps</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Limitations & Future Work</h2>
-    <p>
-      Text rendering remains a challenge. Future work will explore glyph-aware attention and specialized fine-tuning for embedded text synthesis.
-    </p>
-  </section>
-
-  <section>
-    <h2>Authors</h2>
-    <p><strong>Zhen-Qi Chen</strong> – National Yang Ming Chiao Tung University (<a href="mailto:alex.ii13@nycu.edu.tw">alex.ii13@nycu.edu.tw</a>)</p>
-    <p><strong>Yuan-Fu Yang</strong> – National Yang Ming Chiao Tung University (<a href="mailto:yfyangd@gmail.com">yfyangd@gmail.com</a>)</p>
-  </section>
-
+    <section class="resources">
+      <h2>Resources</h2>
+      <p>
+        <a href="https://github.com/Rossi-Laboratory/MVA2025" target="_blank">GitHub Repository</a>
+        <a href="#">[PDF Coming Soon]</a>
+        <a href="#">[BibTeX Coming Soon]</a>
+      </p>
+    </section>
+  </main>
   <footer>
-    <p>Figures and tables referenced from MVA2025 and Appendix files. Please contact authors for full-resolution images.</p>
+    <p>&copy; 2025 DLSF Project. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
 
