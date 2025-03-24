@@ -116,258 +116,162 @@
 	}
 </style>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>This is my paper title</title>
-	<meta property="og:image" content="Path to my teaser.png"/> <!-- Facebook automatically scrapes this. Go to https://developers.facebook.com/tools/debug/ if you update and want to force Facebook to rescrape. -->
-	<meta property="og:title" content="DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Syn-thesis" />
-	<meta property="og:description" content="Paper description." />
-
-	<!-- Get from Google Analytics -->
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src=""></script> 
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
-
-		gtag('config', 'UA-75863369-6');
-	</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DLSF: Dual-Layer Synergistic Fusion</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 2em;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    h1, h2, h3 {
+      color: #1a237e;
+    }
+    section {
+      margin-bottom: 3em;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      margin-top: 1em;
+      border: 1px solid #ddd;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5em;
+      text-align: center;
+    }
+    th {
+      background-color: #e3f2fd;
+    }
+    footer {
+      font-size: 0.9em;
+      color: #777;
+    }
+  </style>
 </head>
-
 <body>
-	<br>
-	<center>
-		<span style="font-size:36px">DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Syn-thesis </span>
-		<br>
-		<table align=center width=850px>
-			<table align=center width=600px>
-				<br>
-				<tr>
-					<td align=center width=100px>
-						<center>
-							<span style="font-size:24px"><a href="">Zhen-Qi Chen</a></span>
-						</center>
-					</td>
-					<td align=center width=100px>
-						<center>
-							<span style="font-size:24px"><a href="https://yfyangd.github.io/">Yuan Fu Yang</a></span>
-						</center>
-					</td>
-				</tr>
-			</table>
-			<table align=center width=250px>
-				<tr>
-					<td align=center width=120px>
-						<center>
-							<span style="font-size:24px"><a href=''>[Paper]</a></span>
-						</center>
-					</td>
-					<td align=center width=120px>
-						<center>
-							<span style="font-size:24px"><a href='https://github.com/Rossi-Laboratory/MVA2025'>[GitHub]</a></span><br>
-						</center>
-					</td>
-				</tr>
-			</table>
-		</table>
-	</center>
 
-	<center>
-		<table align=center width=850px>
-			<br>
-			<tr>
-				<td width=260px>
-					<center>
-						<video controls autoplay muted loop>
-							<source src="./resources/a.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						  </video>
-					</center>
-				</td>
-			</tr>
-		</table>
-		<table align=center width=850px>
-			<br>
-			<tr>
-				<td>
-					The paper will be presented at the Kyoto Research Park in <a href="https://kyoto-amc.iafor.org/presentation/submission74666/">Kyoto</a>, Japan on Wednesday, 11 October 2023 at 14:50 in Room A during Session 3 as an oral presentation.
-				</td>
-			</tr>
-			<br>
-		</table>
-	</center>
+  <h1>DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis</h1>
 
-	<hr>
-	<center>
-		<table align=center width=850px>
-			<tr>
-				<td width=240px>
-					<center>
-						<video width="240" controls autoplay muted loop>
-							<source src="./resources/1.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						  </video>
-					</center>
-				</td>
-				<td width=240px>
-					<center>
-						<video width="240" controls autoplay muted loop>
-							<source src="./resources/8.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						  </video>
-					</center>
-				</td>
-				<td width=240px>
-					<center>
-						<video width="240" controls autoplay muted loop>
-							<source src="./resources/113.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						  </video>
-					</center>
-				</td>
-			</tr>
-		</table>
-	</center>
+  <section>
+    <h2>Overview</h2>
+    <p>
+      Stable Diffusion has redefined the frontier of image synthesis, but challenges like incomplete semantic alignment and detail loss remain in highly textured and complex scenes.
+      Our work proposes <strong>DLSF (Dual-Layer Synergistic Fusion)</strong>, a novel integration framework introducing:
+    </p>
+    <ul>
+      <li><strong>AGF</strong> – Adaptive Global Fusion</li>
+      <li><strong>DSF</strong> – Dynamic Spatial Fusion</li>
+    </ul>
+    <p>
+      These modules enable enhanced interaction between base and refine latent representations, achieving global coherence and local detail preservation.
+    </p>
+    <p><em>See Figure 1: DLSF Pipeline</em></p>
+    <img src="https://drive.google.com/uc?export=view&id=1z9iDWK4TsL8lVXYHP23_ox1iuFZlpdIE" alt="Figure 1: DLSF Pipeline">
+  </section>
 
-	<center>
-		<table align=center width=850px>
-			<tr>
-				<td width=240px>
-					<center>
-						<video width="240" controls autoplay muted loop>
-							<source src="./resources/155.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						  </video>
-					</center>
-				</td>
-				<td width=240px>
-					<center>
-						<video width="240" controls autoplay muted loop>
-							<source src="./resources/183.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						  </video>
-					</center>
-				</td>
-				<td width=240px>
-					<center>
-						<video width="240" controls autoplay muted loop>
-							<source src="./resources/196.mp4" type="video/mp4">
-							Your browser does not support the video tag.
-						  </video>
-					</center>
-				</td>
-			</tr>
-		</table>
-	</center>
-	
-	<hr>
-	
-	<hr>
+  <section>
+    <h2>Methodology</h2>
+    <h3>Latent Diffusion + Synergistic Fusion</h3>
+    <p>
+      Building on SDXL’s latent diffusion framework, DLSF injects multi-level feature fusion through:
+    </p>
+    <h4>🔹 Adaptive Global Fusion (AGF)</h4>
+    <p>Merges base and refine latents with attention weighting to ensure structural consistency.</p>
+    <h4>🔸 Dynamic Spatial Fusion (DSF)</h4>
+    <p>Applies spatial attention at pixel-level to preserve textures and complex patterns.</p>
+  </section>
 
-	<table align=center width=850px>
-		<center><h1>Abstract</h1></center>
-		<tr>
-			<td>
-				In this century, the world is facing a full-scale attack of COVID-19 and artificial intelligence (AI). We are afraid of biological viruses and AI, but we must adapt and depend on them. Viruses pose a threat to human life, but through viruses, antibodies can be produced. AI has a dual impact on human life, as it poses challenges by replacing jobs while enhancing productivity. These are the two major challenges human beings must face at present. We conduct research and art creation by combining these issues that face the greatest contemporary challenges and causing conflicts.
-We collected illustrations of the coronavirus around the world and gathered their shape and color into a dataset. Then we used Generative Adversarial Network (GAN) to analyze, train and generate colorful visual images of viruses like blooming flowers. In the end, we generated a total of 196 virus images and arranged them in a 14x14 matrix. Each image will slowly change in color, corresponding to and alluding to the situation faced by the 196 countries in the world that are mainly affected by coronavirus. When experiencing the artwork, the viewers are impressed by the viral visual attraction generated by artificial intelligence. The virus and generation technology behind the beauty may be out of control and threaten the whole world. Through the exhibition and visual display of the works, we hope that the viewers can explore the challenges and reflections of AI and viruses.
-			</td>
-		</tr>
-	</table>
-	<br>
+  <section>
+    <h2>Experiments</h2>
+    <p>
+      Evaluation on Class-Conditional ImageNet at 256×256 and 512×512 resolutions, using:
+    </p>
+    <ul>
+      <li>FID (Fréchet Inception Distance)</li>
+      <li>sFID (Structural FID)</li>
+      <li>IS (Inception Score)</li>
+      <li>Precision & Recall</li>
+    </ul>
+    <p><em>See Table 1 & 2: Quantitative Results</em></p>
+    <img src="assets/table1.png" alt="Table 1: Comparison at 256x256">
+    <img src="assets/table2.png" alt="Table 2: Comparison at 512x512">
+    <p><em>See Figure 2: Qualitative Comparison with SDXL</em></p>
+    <img src="assets/figure2.png" alt="Figure 2: Qualitative Comparison among SDXL, AGF, and DSF">
+  </section>
 
-	<hr>
-	<center><h1>Talk</h1></center>
-	<p align="center">
-		<iframe width="660" height="395" src="https://www.youtube.com/embed/QZXdjV6TTPc" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen align="center"></iframe>
-	</p>
+  <section>
+    <h2>Ablation Study</h2>
+    <p>
+      Investigating the impact of post-fusion refinement.
+      Results show that further refinement can cause over-smoothing and lower diversity.
+    </p>
+    <p><em>See Table 3: Ablation Study Results</em></p>
+    <img src="assets/table3.png" alt="Table 3: Ablation Study Results">
+  </section>
 
-	<table align=center width=800px>
-		<br>
-		<tr>
-			<center>
-				<span style="font-size:28px"><a href='https://drive.google.com/file/d/1WBMgAgjECqIoRPlw0kIAeVYhevefmZd9/view?usp=drive_link'>[Slides]</a>
-				</span>
-			</center>
-		</tr>
-	</table>
-	<hr>
+  <section>
+    <h2>Visual Results</h2>
+    <p>
+      Explore our high-resolution 1024×1024 outputs using AGF and DSF.
+    </p>
+    <ul>
+      <li><em>Figure 3</em>: AGF vs DSF comparison</li>
+      <img src="assets/figure3.png" alt="Figure 3: AGF vs DSF Sample Comparison">
+      <li><em>Figure 4</em>: Limitation in text generation (e.g. street signs)</li>
+      <img src="assets/figure4.png" alt="Figure 4: Text Limitation in Generation">
+      <li><em>Figures 5–12</em>: Uncurated AGF/DSF samples</li>
+      <img src="assets/figure5.png" alt="Figure 5: AGF sample (chickadee)">
+      <img src="assets/figure6.png" alt="Figure 6: DSF sample (jay)">
+      <img src="assets/figure7.png" alt="Figure 7: AGF sample (terrapin)">
+      <img src="assets/figure8.png" alt="Figure 8: DSF sample (macaque)">
+      <img src="assets/figure9.png" alt="Figure 9: AGF sample (brown bear)">
+      <img src="assets/figure10.png" alt="Figure 10: DSF sample (bison)">
+      <img src="assets/figure11.png" alt="Figure 11: DSF sample (altar)">
+      <img src="assets/figure12.png" alt="Figure 12: DSF sample (candle)">
+    </ul>
+  </section>
 
-	<table align=center width=850px>
-		<center><h1>Generative Model: Self-Attention GAN</h1></center>
-		<tr>
-			<td>
-				The proposed art-generating model is realized by a model called Self-Attention Generative Adversarial Network (SAGAN). GANs consists of two adversarial models: a generative model G and a discriminative model D. Generator captures the data distribution, and Discriminator estimates the probability that a sample came from the training data rather than Generator. Both Generator and Discriminator are trained simultaneously.
-			</td>
-		</tr>
-	</table>
+  <section>
+    <h2>Highlights</h2>
+    <ul>
+      <li>Outperforms SDXL in realism and diversity</li>
+      <li>Improves semantic alignment and texture fidelity</li>
+      <li>Modular design for flexible integration</li>
+      <li>Efficient generation with only 65 DDIM steps</li>
+    </ul>
+  </section>
 
-	<br>
-	
-	<table align=center width=400px>
-		<tr>
-			<td align=center width=400px>
-				<center>
-					<td><img class="round" style="width:900px" src="./resources/SAGAN.png"/></td>
-				</center>
-			</td>
-		</tr>
-	</table>
-	
-	<table align=center width=800px>
-		<br>
-		<tr><center>
-			<span style="font-size:28px">&nbsp;<a href='https://github.com/richzhang/webpage-template'>[GitHub]</a>
-			</center>
-		</span>
-	</table>
-	<br>
-	<hr>
-	<table align=center width=450px>
-		<center><h1>Paper and Supplementary Material</h1></center>
-		<tr>
-			<td><a href=""><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
-			<td><span style="font-size:14pt">Iuan Kai Fang, Yuan Fu Yang, Su Chu Hsu.<br>
-				<b>Generative Art Creation Under the Contemporary Challenges of AI and Coronavirus</b><br>
-				In the 4th Kyoto Conference on Arts, Media & Culture (KAMC), 2023.<br>
-				(hosted on <a href="">ArXiv</a>)<br>
-				<!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
-				<span style="font-size:4pt"><a href=""><br></a>
-				</span>
-			</td>
-		</tr>
-	</table>
-	<br>
-	<hr>
-	<table align=center width=600px style="background-color: #f5f5f5;">
-		<center><h1>Citation</h1></center>
-		<tr>
-			<td>
-				<pre><code>
-					@inproceedings{IuanKaiFang2023,
-					title={Generative Art Creation Under the Contemporary Challenges of AI and Coronavirus},
-					author={IuanKai Fang, YuanFu Yang, SuChu Hsu},
-					year={2023},
-					booktitle={The 4th Kyoto Conference on Arts, Media & Culture (KAMC2023)},}
-				</code></pre>
-			</td>
-		</tr>
-	</table>
+  <section>
+    <h2>Limitations & Future Work</h2>
+    <p>
+      Text rendering remains a challenge. Future work will explore glyph-aware attention and specialized fine-tuning for embedded text synthesis.
+    </p>
+  </section>
 
-	<table align=center width=600px>
-		<tr>
-			<td><span style="font-size:14pt"><center>
-				<a href="./resources/bibtex.txt">[Bibtex]</a>
-			</center></td>
-		</tr>
-	</table>
+  <section>
+    <h2>Authors</h2>
+    <p><strong>Zhen-Qi Chen</strong> – National Yang Ming Chiao Tung University (<a href="mailto:alex.ii13@nycu.edu.tw">alex.ii13@nycu.edu.tw</a>)</p>
+    <p><strong>Yuan-Fu Yang</strong> – National Yang Ming Chiao Tung University (<a href="mailto:yfyangd@gmail.com">yfyangd@gmail.com</a>)</p>
+  </section>
 
-	<hr>
-	<br>
+  <footer>
+    <p>Figures and tables referenced from MVA2025 and Appendix files. Please contact authors for full-resolution images.</p>
+  </footer>
 
-	
-
-<br>
 </body>
 </html>
 
