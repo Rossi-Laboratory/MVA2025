@@ -85,8 +85,8 @@ fusion_type = "DSF"  # or "AGF"
 
 | Prompt                                 | Fusion | Output                            |
 |----------------------------------------|--------|-----------------------------------|
-| *a futuristic cityscape at night*      | AGF    | ![AGF](assets/example1_agf.jpg)   |
-| *an astronaut riding a horse on Mars*  | DSF    | ![DSF](assets/example2_dsf.jpg)   |
+| *a futuristic cityscape at night*      | AGF    | ![AGF](image/example1.jpg)   |
+| *an astronaut riding a horse on Mars*  | DSF    | ![DSF](image/example2.jpg)   |
 
 ---
 
