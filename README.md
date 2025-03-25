@@ -40,8 +40,7 @@ DLSF-Inference/
 ├── inference.ipynb         # Main inference demo (Jupyter Notebook)
 ├── fusion_modules.py       # AGF and DSF fusion logic
 ├── requirements.txt        # Python dependencies
-├── README.md               # This file
-└── assets/                 # (Optional) Example output images
+└── evaluator.py            # Evaluation script for metrics (FID, IS, etc.)
 ```
 
 ---
