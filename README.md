@@ -86,7 +86,7 @@ fusion_type = "DSF"  # or "AGF"
 |Fusion                              | Prompt     | Output |
 |----------------------------------------|--------|--------|
 | AGF      | *a futuristic cityscape at night*    | <img src="image/example1.jpg" width="320"/> |
-| DSF |  *a dragon-shaped hot air balloon flying over the Grand Canyon at sunset*  | <img src="image/example2.jpg" width="320"/> |
+| DSF |  *a hot air balloon flying over the Grand Canyon at sunset*  | <img src="image/example2.jpg" width="320"/> |
 
 
 ---
