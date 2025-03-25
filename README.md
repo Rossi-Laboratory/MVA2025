@@ -82,10 +82,13 @@ fusion_type = "DSF"  # or "AGF"
 
 ## 🖼️ Output Samples
 
-|Fusion                              | Prompt     | Output |
-|----------------------------------------|--------|--------|
-| AGF      | *a futuristic cityscape at night*    | <img src="image/example1.jpg" width="320"/> |
-| DSF |  *a hot air balloon flying over the Grand Canyon at sunset*  | <img src="image/example2.jpg" width="320"/> |
+DLSF demonstrates strong semantic alignment and texture fidelity. Below are sample outputs using AGF and DSF fusion strategies:
+
+| Fusion | Prompt                                                         | Output                                        |
+|--------|----------------------------------------------------------------|-----------------------------------------------|
+| AGF    | *a futuristic cityscape at night*                              | <img src="image/example1.jpg" width="320"/>   |
+| DSF    | *a hot air balloon flying over the Grand Canyon at sunset*     | <img src="image/example2.jpg" width="320"/>   |
+
 
 
 ---
