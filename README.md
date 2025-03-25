@@ -83,10 +83,11 @@ fusion_type = "DSF"  # or "AGF"
 
 ## 🖼️ Output Samples
 
-| Prompt                                 | Fusion | Output                            |
-|----------------------------------------|--------|-----------------------------------|
-| *a futuristic cityscape at night*      | AGF    | ![AGF](image/example1.jpg)   |
-| *an astronaut riding a horse on Mars*  | DSF    | ![DSF](image/example2.jpg)   |
+| Prompt                                 | Fusion | Output |
+|----------------------------------------|--------|--------|
+| *a futuristic cityscape at night*      | AGF    | <img src="image/example1.jpg" width="320"/> |
+| *a dragon-shaped hot air balloon flying over the Grand Canyon at sunset* | DSF    | <img src="image/example2.jpg" width="320"/> |
+
 
 ---
 
