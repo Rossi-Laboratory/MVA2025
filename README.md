@@ -1,4 +1,4 @@
-# 🌀 DLSF Inference: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis
+# 🌀 DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis
 
 > This repository provides the inference pipeline for **DLSF (Dual-Layer Synergistic Fusion)**, a framework designed to improve image generation quality in **Stable Diffusion XL (SDXL)** models using two novel fusion strategies — **Adaptive Global Fusion (AGF)** and **Dynamic Spatial Fusion (DSF)**.
 
