@@ -83,7 +83,7 @@ pip install xformers
 The script will generate an image using your selected fusion type and prompt:
 
 ```bash
-python dlsf_inference_module_v2.py
+python DLSF_module.py
 ```
 
 This will use the default prompt and save the result to `output.jpg`.
@@ -95,7 +95,7 @@ This will use the default prompt and save the result to `output.jpg`.
 To use your own prompt or fusion strategy directly in Python:
 
 ```python
-from dlsf_inference_module_v2 import run_dlsf_inference
+from DLSF_module import run_dlsf_inference
 
 image = run_dlsf_inference(
     prompt="a dragon-shaped hot air balloon flying over the Grand Canyon",
