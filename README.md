@@ -60,73 +60,55 @@ pip install xformers
 ```
 
 ---
-
 ## 🚀 Running Inference
 
-Follow the steps below to generate high-resolution images using DLSF:
+You can generate images using the complete DLSF pipeline via the script `dlsf_inference_module_v2.py`. This module loads both base and refiner SDXL models, applies AGF or DSF fusion to their latent outputs, and decodes the fused latent into a 1024×1024 image using the built-in VAE.
 
-### 1. Clone the repository and launch the notebook
+### 1. Install Dependencies
 
 ```bash
-git clone https://github.com/your-username/DLSF-Inference.git
-cd DLSF-Inference
-jupyter notebook
+pip install -r requirements.txt
 ```
 
-Open `inference.ipynb` in Jupyter Notebook.
+Optional for acceleration:
 
----
-
-### 2. Load models and select fusion strategy
-
-The notebook loads:
-- The **SDXL base model**: `stable-diffusion-xl-base-1.0`
-- The **SDXL refiner model**: `stable-diffusion-xl-refiner-1.0`
-
-Both models are fetched from HuggingFace using `from_pretrained()` and run in FP16 for efficiency.
-
-Choose one of the two fusion strategies:
-```python
-fusion_type = "AGF"  # or "DSF"
+```bash
+pip install xformers
 ```
 
 ---
 
-### 3. Enter your custom prompt
+### 2. Run via Python Script
 
-Set your desired prompt (text description of the image to generate):
+The script will generate an image using your selected fusion type and prompt:
 
-```python
-prompt = "a majestic lion in a surreal cyberpunk jungle"
+```bash
+python dlsf_inference_module_v2.py
 ```
 
-The prompt will be encoded via SDXL’s dual-text encoder to guide image generation.
+This will use the default prompt and save the result to `output.jpg`.
 
 ---
 
-### 4. Run the inference pipeline
+### 3. Customize in Python
 
-The pipeline proceeds through the following steps:
-- Generate **base latent** from prompt
-- Refine it using the **refiner model**
-- Fuse base and refined latents using the selected **AGF or DSF module**
-- Decode the fused latent into a 1024×1024 image using SDXL’s VAE
-
-The final image will be displayed and can also be saved locally.
-
----
-
-### 5. Saving results (optional)
-
-You can save the output image using:
+To use your own prompt or fusion strategy directly in Python:
 
 ```python
-image.save("output.jpg")
+from dlsf_inference_module_v2 import run_dlsf_inference
+
+image = run_dlsf_inference(
+    prompt="a dragon-shaped hot air balloon flying over the Grand Canyon",
+    fusion_type="AGF",  # or "DSF"
+    device="cuda"
+)
+image.save("custom_output.jpg")
 ```
 
 ---
 
-This process takes ~10 seconds per image on an NVIDIA A6000. You may increase batch size or parallelism if GPU memory allows.
+The decoding process uses a `decode_image` utility to handle latent unscaling, watermarking (if any), and postprocessing. Images are returned as PIL objects.
+
 
 
 ---
