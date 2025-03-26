@@ -44,22 +44,6 @@ DLSF-Inference/
 ```
 
 ---
-
-## ⚙️ Installation
-
-Install required dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Optionally, install `xformers` for faster inference:
-
-```bash
-pip install xformers
-```
-
----
 ## 🚀 Running Inference
 
 You can generate images using the complete DLSF pipeline via the script `DLSF_module.py`.  
