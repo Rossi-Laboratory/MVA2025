@@ -127,7 +127,7 @@ image.save("output.jpg")
 ---
 
 This process takes ~10 seconds per image on an NVIDIA A6000. You may increase batch size or parallelism if GPU memory allows.
-```
+
 
 ---
 
