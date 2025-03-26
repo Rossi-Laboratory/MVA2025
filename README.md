@@ -62,7 +62,7 @@ pip install xformers
 ---
 ## 🚀 Running Inference
 
-You can generate images using the complete DLSF pipeline via the script DLSF_module.py.  
+You can generate images using the complete DLSF pipeline via the script `DLSF_module.py`.  
 This script performs the following steps:
 
 1. Loads SDXL base and refiner models from HuggingFace.
@@ -70,7 +70,7 @@ This script performs the following steps:
 3. Applies the AGF or DSF fusion module to combine latents.
 4. Decodes the fused latent into a 1024×1024 image using the VAE.
 5. Applies postprocessing and watermarking (if applicable).
-6. Saves the final image as a .jpg file.
+6. Saves the final image as a `.jpg` file.
 
 ---
 
@@ -78,15 +78,15 @@ This script performs the following steps:
 
 Make sure you have Python 3.9+ and install the required packages:
 
-bash
+```bash
 pip install -r requirements.txt
-
+```
 
 (Optional) For faster inference on compatible GPUs:
 
-bash
+```bash
 pip install xformers
-
+```
 
 ---
 
@@ -94,13 +94,13 @@ pip install xformers
 
 You can run the default example using:
 
-bash
+```bash
 python DLSF_module.py
-
+```
 
 - This uses a default prompt defined in the script.
-- The selected fusion strategy is "DSF" by default.
-- The result will be saved as output.jpg in the current directory.
+- The selected fusion strategy is `"DSF"` by default.
+- The result will be saved as `output.jpg` in the current directory.
 
 ---
 
@@ -108,7 +108,7 @@ python DLSF_module.py
 
 You can also use the DLSF inference pipeline directly in your own Python scripts:
 
-python
+```python
 from DLSF_module import run_dlsf_inference
 
 image = run_dlsf_inference(
@@ -117,24 +117,24 @@ image = run_dlsf_inference(
     device="cuda"       # or "cpu"
 )
 image.save("custom_output.jpg")
+```
 
+- `prompt`: A custom text description of the image you want.
+- `fusion_type`: Choose between `"AGF"` for semantic alignment or `"DSF"` for spatial detail.
+- `device`: `"cuda"` for GPU (recommended), or `"cpu"` for testing.
 
-- prompt: A custom text description of the image you want.
-- fusion_type: Choose between "AGF" for semantic alignment or "DSF" for spatial detail.
-- device: "cuda" for GPU (recommended), or "cpu" for testing.
-
-The returned image is a PIL.Image object that you can view, save, or post-process.
+The returned `image` is a `PIL.Image` object that you can view, save, or post-process.
 
 ---
 
 ### 4. Modify Prompt and Fusion Type in Script
 
-In DLSF_module.py, you can directly change these two lines to test different prompts or strategies:
+In `DLSF_module.py`, you can directly change these two lines to test different prompts or strategies:
 
-python
+```python
 prompt = "your custom prompt here"
 fusion = "AGF"  # or "DSF"
-
+```
 
 Save and rerun the script to regenerate the image.
 
@@ -142,9 +142,10 @@ Save and rerun the script to regenerate the image.
 
 ### 5. What Happens Internally
 
-- The script loads SDXL base + refiner models with StableDiffusionPipeline.
-- run_dlsf_inference() generates two latent outputs, fuses them, and decodes to an image.
-- decode_image() handles unscaling, watermarking, and output conversion.
+- The script loads SDXL base + refiner models with `StableDiffusionPipeline`.
+- `run_dlsf_inference()` generates two latent outputs, fuses them, and decodes to an image.
+- `decode_image()` handles unscaling, watermarking, and output conversion.
+
 
 
 
