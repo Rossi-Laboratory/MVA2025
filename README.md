@@ -36,7 +36,6 @@ The fused latent is decoded by SDXL’s VAE into the final high-resolution image
 ```
 DLSF-Inference/
 ├── DLSF_module.py            # Full pipeline: fusion + decoding + inference
-├── fusion_modules.py         # AGF and DSF fusion modules
 ├── evaluator.py              # Evaluation script (FID, IS, sFID, etc.)
 ├── requirements.txt          # Python dependency list
 └── README.md                 # Project documentation
