@@ -63,7 +63,9 @@ pip install xformers
 
 ## 🚀 Running Inference
 
-1. Clone the repository and launch Jupyter:
+Follow the steps below to generate high-resolution images using DLSF:
+
+### 1. Clone the repository and launch the notebook
 
 ```bash
 git clone https://github.com/your-username/DLSF-Inference.git
@@ -71,11 +73,60 @@ cd DLSF-Inference
 jupyter notebook
 ```
 
-2. Inside `inference.ipynb`, customize your prompt and fusion strategy:
+Open `inference.ipynb` in Jupyter Notebook.
+
+---
+
+### 2. Load models and select fusion strategy
+
+The notebook loads:
+- The **SDXL base model**: `stable-diffusion-xl-base-1.0`
+- The **SDXL refiner model**: `stable-diffusion-xl-refiner-1.0`
+
+Both models are fetched from HuggingFace using `from_pretrained()` and run in FP16 for efficiency.
+
+Choose one of the two fusion strategies:
+```python
+fusion_type = "AGF"  # or "DSF"
+```
+
+---
+
+### 3. Enter your custom prompt
+
+Set your desired prompt (text description of the image to generate):
 
 ```python
 prompt = "a majestic lion in a surreal cyberpunk jungle"
-fusion_type = "DSF"  # or "AGF"
+```
+
+The prompt will be encoded via SDXL’s dual-text encoder to guide image generation.
+
+---
+
+### 4. Run the inference pipeline
+
+The pipeline proceeds through the following steps:
+- Generate **base latent** from prompt
+- Refine it using the **refiner model**
+- Fuse base and refined latents using the selected **AGF or DSF module**
+- Decode the fused latent into a 1024×1024 image using SDXL’s VAE
+
+The final image will be displayed and can also be saved locally.
+
+---
+
+### 5. Saving results (optional)
+
+You can save the output image using:
+
+```python
+image.save("output.jpg")
+```
+
+---
+
+This process takes ~10 seconds per image on an NVIDIA A6000. You may increase batch size or parallelism if GPU memory allows.
 ```
 
 ---
