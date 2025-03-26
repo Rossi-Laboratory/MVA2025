@@ -45,24 +45,26 @@ DLSF-Inference/
 
 ## 🚀 Running Inference
 
-Generate images with DLSF by running `DLSF_module.py`. The script performs the following steps:
+The DLSF pipeline enhances SDXL image generation by fusing base and refined latent representations using AGF or DSF. Here’s how it works:
 
-1. Loads SDXL base and refiner models from HuggingFace.
-2. Encodes the prompt to generate latent features.
-3. Applies AGF or DSF to fuse base and refined latents.
-4. Decodes the fused latent into a 1024×1024 image.
-5. Applies optional watermarking and postprocessing.
-6. Saves the result as a `.jpg` file.
+1. **Model Loading** – Load SDXL base and refiner models from HuggingFace.
+2. **Latent Generation** – Encode a text prompt into two latent feature maps.
+3. **Latent Fusion** – Merge latents using AGF (semantic alignment) or DSF (spatial detail).
+4. **Decoding** – Use the VAE to decode the fused latent into a 1024×1024 image.
+5. **Postprocessing** – Apply optional watermarking and final image adjustments.
+6. **Saving** – Output the result as a `.jpg` file.
 
 ---
 
 ### 1. Install Dependencies
 
+Ensure Python 3.9+ is installed:
+
 ```bash
 pip install -r requirements.txt
 ```
 
-(Optional for speed):
+(Optional) For faster attention operations on GPU:
 
 ```bash
 pip install xformers
@@ -70,20 +72,31 @@ pip install xformers
 
 ---
 
-### 2. Run the Inference Script
+### 2. Run and Customize the Script
+
+Run the default inference setup:
 
 ```bash
 python DLSF_module.py
 ```
 
-- Uses default prompt and `"DSF"` strategy.
+- Default prompt and `"DSF"` strategy are used.
 - Output saved as `output.jpg`.
+
+To modify the prompt or strategy, open `DLSF_module.py` and edit:
+
+```python
+prompt = "your custom prompt here"
+fusion = "AGF"  # or "DSF"
+```
+
+Save the file and re-run the script.
 
 ---
 
-### 3. Customize in Python
+### 3. Use in Python Scripts
 
-You can also use the DLSF pipeline directly:
+Import and run DLSF in your own workflow:
 
 ```python
 from DLSF_module import run_dlsf_inference
@@ -96,31 +109,21 @@ image = run_dlsf_inference(
 image.save("custom_output.jpg")
 ```
 
-- `prompt`: Custom text-to-image description
-- `fusion_type`: `"AGF"` (semantic) or `"DSF"` (detail)
-- `device`: `"cuda"` recommended
+- `prompt`: text description of the target image
+- `fusion_type`: "AGF" (semantic) or "DSF" (spatial detail)
+- `device`: "cuda" recommended for GPUs
 
 ---
 
-### 4. Modify Defaults in Script
+### 4. Internal Workflow
 
-In `DLSF_module.py`, edit:
+- **Load models** using `StableDiffusionPipeline`
+- **Generate latents** from prompt (base + refined)
+- **Fuse** latents using AGF or DSF
+- **Decode** fused latent with SDXL’s VAE
+- **Postprocess** and save the final image (1024×1024)
 
-```python
-prompt = "your custom prompt here"
-fusion = "AGF"
-```
-
-Then re-run the script.
-
----
-
-### 5. Internal Workflow
-
-- Loads models via `StableDiffusionPipeline`
-- Generates and fuses latents via AGF/DSF
-- Decodes image using SDXL’s VAE
-- Post-processes and saves output
+> 💡 Typical runtime: ~10 seconds per image on NVIDIA A6000.
 
 ---
 
