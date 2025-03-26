@@ -6,7 +6,7 @@
 
 ## 🌐 Project Links
 
-- [📄 Paper]  |  [🔗 Project Page]  |  [🎞️ Video]  |  [💻 Code]
+- [📄 Paper]  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code]
 
 ---
 
