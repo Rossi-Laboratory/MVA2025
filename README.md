@@ -1,6 +1,6 @@
 # 🌀 DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis
 
-> This repository provides the inference pipeline for **DLSF (Dual-Layer Synergistic Fusion)**, a framework designed to improve image generation quality in **Stable Diffusion XL (SDXL)** models using two novel fusion strategies — **Adaptive Global Fusion (AGF)** and **Dynamic Spatial Fusion (DSF)**.
+> This repository provides the inference pipeline for **DLSF (Dual-Layer Synergistic Fusion)** — a novel framework that enhances image generation quality in **Stable Diffusion XL (SDXL)** through two complementary fusion strategies: **Adaptive Global Fusion (AGF)** and **Dynamic Spatial Fusion (DSF)**.
 
 ---
 
@@ -12,24 +12,22 @@
 
 ## ✨ Highlights
 
-- 🔁 Combines **base** and **refined** latents through learnable fusion modules.
-- 🧠 AGF & DSF modules preserve both global semantics and local details.
-- 🎨 Supports text-to-image and multi-view generation at 1024×1024 resolution.
-- ⚡ FP16-optimized inference using HuggingFace Diffusers + PyTorch.
-- 📈 Improved FID, IS, and Recall over baseline SDXL on ImageNet.
+- 🔁 Seamlessly fuses **base** and **refined** latents using learnable fusion modules.
+- 🧠 AGF & DSF modules optimize both semantic alignment and spatial detail.
+- 🖼️ Enables high-resolution (1024×1024) image generation via SDXL decoding.
+- ⚡ Built on PyTorch and HuggingFace Diffusers with FP16 support.
+- 📈 Outperforms SDXL in FID, IS, and Recall on ImageNet benchmarks.
 
 ---
 
 ## 🧠 Method Summary
 
-Standard SDXL pipelines sequentially apply a base and refiner model but fuse their latents suboptimally.
+While standard SDXL pipelines run base and refiner models independently, DLSF introduces latent-space fusion:
 
-**DLSF** solves this by:
+- **AGF (Adaptive Global Fusion)** — aligns features across semantic levels using learnable attention weights.
+- **DSF (Dynamic Spatial Fusion)** — applies spatial attention to enhance pixel-level detail.
 
-- 🌀 **AGF (Adaptive Global Fusion)** — Attention-based fusion for aligning hierarchical features.
-- 🧭 **DSF (Dynamic Spatial Fusion)** — Spatial attention to emphasize high-frequency details.
-
-The resulting latent is decoded by SDXL’s VAE into a final high-resolution image.
+The fused latent is decoded by SDXL’s VAE into the final high-resolution image.
 
 ---
 
@@ -37,36 +35,35 @@ The resulting latent is decoded by SDXL’s VAE into a final high-resolution ima
 
 ```
 DLSF-Inference/
-├── inference.ipynb         # Main inference demo (Jupyter Notebook)
-├── fusion_modules.py       # AGF and DSF fusion logic
-├── requirements.txt        # Python dependencies
-└── evaluator.py            # Evaluation script for metrics (FID, IS, etc.)
+├── DLSF_module.py            # Full pipeline: fusion + decoding + inference
+├── fusion_modules.py         # AGF and DSF fusion modules
+├── evaluator.py              # Evaluation script (FID, IS, sFID, etc.)
+├── requirements.txt          # Python dependency list
+└── README.md                 # Project documentation
 ```
 
 ---
+
 ## 🚀 Running Inference
 
-You can generate images using the complete DLSF pipeline via the script `DLSF_module.py`.  
-This script performs the following steps:
+Generate images with DLSF by running `DLSF_module.py`. The script performs the following steps:
 
 1. Loads SDXL base and refiner models from HuggingFace.
-2. Generates base and refined latent features from your text prompt.
-3. Applies the AGF or DSF fusion module to combine latents.
-4. Decodes the fused latent into a 1024×1024 image using the VAE.
-5. Applies postprocessing and watermarking (if applicable).
-6. Saves the final image as a `.jpg` file.
+2. Encodes the prompt to generate latent features.
+3. Applies AGF or DSF to fuse base and refined latents.
+4. Decodes the fused latent into a 1024×1024 image.
+5. Applies optional watermarking and postprocessing.
+6. Saves the result as a `.jpg` file.
 
 ---
 
 ### 1. Install Dependencies
 
-Make sure you have Python 3.9+ and install the required packages:
-
 ```bash
 pip install -r requirements.txt
 ```
 
-(Optional) For faster inference on compatible GPUs:
+(Optional for speed):
 
 ```bash
 pip install xformers
@@ -74,23 +71,20 @@ pip install xformers
 
 ---
 
-### 2. Run Inference from Script
-
-You can run the default example using:
+### 2. Run the Inference Script
 
 ```bash
 python DLSF_module.py
 ```
 
-- This uses a default prompt defined in the script.
-- The selected fusion strategy is `"DSF"` by default.
-- The result will be saved as `output.jpg` in the current directory.
+- Uses default prompt and `"DSF"` strategy.
+- Output saved as `output.jpg`.
 
 ---
 
 ### 3. Customize in Python
 
-You can also use the DLSF inference pipeline directly in your own Python scripts:
+You can also use the DLSF pipeline directly:
 
 ```python
 from DLSF_module import run_dlsf_inference
@@ -103,54 +97,42 @@ image = run_dlsf_inference(
 image.save("custom_output.jpg")
 ```
 
-- `prompt`: A custom text description of the image you want.
-- `fusion_type`: Choose between `"AGF"` for semantic alignment or `"DSF"` for spatial detail.
-- `device`: `"cuda"` for GPU (recommended), or `"cpu"` for testing.
-
-The returned `image` is a `PIL.Image` object that you can view, save, or post-process.
+- `prompt`: Custom text-to-image description
+- `fusion_type`: `"AGF"` (semantic) or `"DSF"` (detail)
+- `device`: `"cuda"` recommended
 
 ---
 
-### 4. Modify Prompt and Fusion Type in Script
+### 4. Modify Defaults in Script
 
-In `DLSF_module.py`, you can directly change these two lines to test different prompts or strategies:
+In `DLSF_module.py`, edit:
 
 ```python
 prompt = "your custom prompt here"
-fusion = "AGF"  # or "DSF"
+fusion = "AGF"
 ```
 
-Save and rerun the script to regenerate the image.
+Then re-run the script.
 
 ---
 
-### 5. What Happens Internally
+### 5. Internal Workflow
 
-- The script loads SDXL base + refiner models with `StableDiffusionPipeline`.
-- `run_dlsf_inference()` generates two latent outputs, fuses them, and decodes to an image.
-- `decode_image()` handles unscaling, watermarking, and output conversion.
-
-
-
-
-
-
+- Loads models via `StableDiffusionPipeline`
+- Generates and fuses latents via AGF/DSF
+- Decodes image using SDXL’s VAE
+- Post-processes and saves output
 
 ---
 
 ## 🖼️ Output Samples
 
-DLSF demonstrates strong semantic alignment and texture fidelity. Below are sample outputs using AGF and DSF fusion strategies:
-
-| Fusion | Prompt                                                         | Output                                        |
-|--------|----------------------------------------------------------------|-----------------------------------------------|
-| AGF    | *a futuristic cityscape at night*                              | <img src="image/example1.jpg" width="320"/>   |
-| DSF    | *a hot air balloon flying over the Grand Canyon at sunset*     | <img src="image/example2.jpg" width="320"/>   |
-
-
+| Fusion | Prompt                                                     | Output                                      |
+|--------|------------------------------------------------------------|---------------------------------------------|
+| AGF    | *a futuristic cityscape at night*                          | <img src="image/example1.jpg" width="320"/> |
+| DSF    | *a hot air balloon flying over the Grand Canyon at sunset*| <img src="image/example2.jpg" width="320"/> |
 
 ---
-
 
 ## 📊 Performance on ImageNet (Class-Conditional)
 
@@ -170,7 +152,7 @@ DLSF demonstrates strong semantic alignment and texture fidelity. Below are samp
 | AGF    | 18.70 | 49.77  | 243.48 | 0.852        | 0.381     |
 | DSF    | 18.70 | 50.22  | 243.62 | 0.854        | 0.383     |
 
-### 🔬 Ablation Study (512×512 with Additional Refinement Step `/r`)
+### 🔬 Ablation Study (512×512 with Refinement Step `/r`)
 
 | Method     | FID ↓ | sFID ↓ | IS ↑    | Precision ↑ | Recall ↑ |
 |------------|-------|--------|--------|--------------|-----------|
@@ -179,15 +161,14 @@ DLSF demonstrates strong semantic alignment and texture fidelity. Below are samp
 | DSF        | 18.70 | 50.22  | 243.62 | 0.854        | 0.383     |
 | DSF /r     | 19.89 | 54.28  | 218.36 | 0.853        | 0.383     |
 
-
 ---
 
 ## 💻 Environment
 
 - Python 3.9+
 - PyTorch ≥ 2.0
-- GPU: NVIDIA A6000 or ≥24GB VRAM recommended
-- Tested with: `diffusers==0.24.0`
+- GPU: NVIDIA A6000 or GPU with ≥24GB VRAM
+- Recommended: `diffusers==0.24.0`, `xformers` (optional)
 
 ---
 
@@ -204,6 +185,6 @@ DLSF demonstrates strong semantic alignment and texture fidelity. Below are samp
 
 ## 🔮 Future Work
 
-- Video and 3D content generation
-- Applications in medical and industrial domains
-- Releasing training pipeline for community fine-tuning
+- Extending to video and 3D generation
+- Applications in medical imaging, remote sensing
+- Open-sourcing the training pipeline
