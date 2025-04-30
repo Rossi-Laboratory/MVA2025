@@ -6,7 +6,7 @@
 
 ## 🌐 Project Links
 
-- [📄 Paper]  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code] (https://github.com/Rossi-Laboratory/MVA2025) |  [📖 Wiki](https://deepwiki.com/Rossi-Laboratory/MVA2025/3.2-python-api)
+- [📄 Paper]  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code]  |  [📖 Wiki](https://deepwiki.com/Rossi-Laboratory/MVA2025/3.2-python-api)
 
 ---
 
