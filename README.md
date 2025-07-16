@@ -1,6 +1,6 @@
 # 🌀 DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis
 
-## 🎤 Oral Presentation @ Machine Vision Application Conference 2025
+### 🎤 Oral Presentation @ Machine Vision Application Conference 2025, Kyoto
 - 📣 This paper has been selected for **Oral Presentation** at MVA 2025, Session **Oral 1-3: Image Synthesis and Generation**.
 - 🗓️ **Presentation Time:** **July 26 (Saturday), 16:10 JST**
 - 📍 We welcome you to join the talk and discussion!
