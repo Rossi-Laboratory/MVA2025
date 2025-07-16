@@ -2,10 +2,19 @@
 
 ## 🎤 Oral Presentation @ MVA 2025
 📣 This paper has been selected for **Oral Presentation** at 2025 Machine Vision Application Conference, Session **Oral 1-3: Image Synthesis and Generation**.
-
 🗓️ **Presentation Time:** **July 26 (Saturday), 16:10 JST**
-
 📍 We welcome you to join the talk and discussion!
+
+
+
+## 🎤 Oral Presentation @ MVA 2025
+
+📣 This paper has been selected for **Oral Presentation** at **MVA 2025**, Session **Oral 1-3: Image Synthesis and Generation**.
+🗓️ **Presentation Time:** **July 26 (Saturday), 16:10 JST**
+📍 We welcome you to join the talk and discussion!
+
+
+
 
 > This repository provides the inference pipeline for **DLSF (Dual-Layer Synergistic Fusion)** — a novel framework that enhances image generation quality in **Stable Diffusion XL (SDXL)** through two complementary fusion strategies: **Adaptive Global Fusion (AGF)** and **Dynamic Spatial Fusion (DSF)**.
 
