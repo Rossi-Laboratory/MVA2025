@@ -1,4 +1,6 @@
 # 🌀 DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis
+2025 Machine Vision Application (MVA) Conference **Oral Paper** !
+
 
 > This repository provides the inference pipeline for **DLSF (Dual-Layer Synergistic Fusion)** — a novel framework that enhances image generation quality in **Stable Diffusion XL (SDXL)** through two complementary fusion strategies: **Adaptive Global Fusion (AGF)** and **Dynamic Spatial Fusion (DSF)**.
 
