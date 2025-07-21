@@ -12,7 +12,7 @@
 
 ## 🌐 Project Links
 
-- [📄 Paper]  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code](https://github.com/Rossi-Laboratory/MVA2025)  |  [📖 Wiki](https://deepwiki.com/Rossi-Laboratory/MVA2025/)
+- [📄 Paper](https://arxiv.org/abs/2507.13388v1)  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code](https://github.com/Rossi-Laboratory/MVA2025)  |  [📖 Wiki](https://deepwiki.com/Rossi-Laboratory/MVA2025/)
 
 ---
 
