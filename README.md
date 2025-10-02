@@ -12,7 +12,7 @@
 
 ## 🌐 Project Links
 
-- [📄 Paper](https://arxiv.org/abs/2507.13388v1)  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code](https://github.com/Rossi-Laboratory/MVA2025)  |  [📖 Wiki](https://deepwiki.com/Rossi-Laboratory/MVA2025/)
+- [📄 Paper]([DLSF: Dual-Layer Synergistic Fusion for High-Fidelity Image Synthesis](https://ieeexplore.ieee.org/abstract/document/11175080))  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code](https://github.com/Rossi-Laboratory/MVA2025)  |  [📖 Wiki](https://deepwiki.com/Rossi-Laboratory/MVA2025/)
 
 ---
 
