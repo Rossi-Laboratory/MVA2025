@@ -10,12 +10,6 @@
 
 ---
 
-## 🌐 Project Links
-
-- [Paper](https://www.arxiv.org/abs/2512.22681)  |  [Project Page](https://rossi-laboratory.github.io/CritiFusion/)  |  [Video]  |  [Code](https://github.com/Rossi-Laboratory/MVA2025)  |  [Demo](https://huggingface.co/spaces/yfyangd/CritiFusion)
-
----
-
 ## ✨ Highlights
 
 - 🔁 Seamlessly fuses **base** and **refined** latents using learnable fusion modules.
