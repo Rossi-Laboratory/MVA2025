@@ -12,7 +12,7 @@
 
 ## 🌐 Project Links
 
-- [📄 Paper](https://ieeexplore.ieee.org/abstract/document/11175080)  |  [🔗 Project Page](https://rossi-laboratory.github.io/MVA2025/)  |  [🎞️ Video]  |  [💻 Code](https://github.com/Rossi-Laboratory/MVA2025)  |  [📖 Wiki](https://deepwiki.com/Rossi-Laboratory/MVA2025/)
+- [Paper](https://www.arxiv.org/abs/2512.22681)  |  [Project Page](https://rossi-laboratory.github.io/CritiFusion/)  |  [Video]  |  [Code](https://github.com/Rossi-Laboratory/MVA2025)  |  [Demo](https://huggingface.co/spaces/yfyangd/CritiFusion)
 
 ---
 
